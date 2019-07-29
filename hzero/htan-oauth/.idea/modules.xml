@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/hzero-register/hzero-register.iml" filepath="$PROJECT_DIR$/hzero-register/hzero-register.iml" />
+      <module fileurl="file://$PROJECT_DIR$/htan-oauth.iml" filepath="$PROJECT_DIR$/htan-oauth.iml" />
     </modules>
   </component>
 </project>
