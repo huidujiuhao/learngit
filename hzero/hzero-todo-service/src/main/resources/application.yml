@@ -1,0 +1,28 @@
+spring:
+ datasource:
+      url: ${SPRING_DATASOURCE_URL:jdbc:mysql://db.hzero.org:3306/hzero_governance?useUnicode=true&characterEncoding=utf-8&useSSL=false}
+      username: ${SPRING_DATASOURCE_USERNAME:hzero}
+      password: ${SPRING_DATASOURCE_PASSWORD:hzero}
+
+mybatis:
+   mapperLocations: classpath*:/mapper/*.xml
+   configuration:
+      mapUnderscoreToCamelCase: true
+eureka:
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 10
+    metadata-map:
+        VERSION: 0.11.0
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://dev.hzero.org:8000/eureka}
+    registryFetchIntervalSeconds: 10
+    disable-delta: true
+logging:
+  level:
+    org.springframework.web: ${LOG_LEVEL:info}
+    org.apache.ibatis: ${LOG_LEVEL:info}
+    io.choerodon: ${LOG_LEVEL:info}
+    org.hzero: ${LOG_LEVEL:info}
