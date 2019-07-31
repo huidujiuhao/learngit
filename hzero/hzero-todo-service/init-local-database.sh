@@ -1,7 +1,6 @@
-#!/bin/bash
-version="0.10.0.RELEASE"
+#!/usr/bin/bash
 mkdir -p tool-jar
-if [ ! -f bin/choerodon-tool-liquibase.jar ]
+if [ ! -f tool-jar/choerodon-tool-liquibase.jar ]
 then
     curl https://oss.sonatype.org/content/groups/public/io/choerodon/choerodon-tool-liquibase/${version}/choerodon-tool-liquibase-${version}.jar -o ./tool-jar/choerodon-tool-liquibase.jar
 fi
