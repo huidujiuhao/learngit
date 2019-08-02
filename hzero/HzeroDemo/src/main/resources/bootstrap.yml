@@ -1,0 +1,53 @@
+server:
+  # 服务端口
+  port: 9089
+management:
+  server:
+    # 监控管理端口
+    port: 9090
+  endpoints:
+    web:
+      exposure:
+        # 需要开放的 Actuator 监控端点，默认开放所有
+        include: '*'
+
+spring:
+  application:
+    name: ora-todo-service-25747
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:default}
+  cloud:
+    config:
+      fail-fast: false
+      # 是否启用配置中心
+      enabled: ${SPRING_CLOUD_CONFIG_ENABLED:true}
+      # 配置中心地址
+      uri: ${SPRING_CLOUD_CONFIG_URI:http://dev.hzero.org:8010}
+      retry:
+        # 最大重试次数
+        maxAttempts: 6
+        multiplier: 1.1
+        # 重试间隔时间
+        maxInterval: 2000
+      # 标签
+      label: ${SPRING_CLOUD_CONFIG_LABEL:}
+    inetutils:
+      # 本地多网卡时，忽略回环网卡
+      ignored-interfaces[0]: lo
+      # 本地多网卡时，选择注册的网段
+      preferred-networks: 10.16
+eureka:
+  instance:
+    # 以IP注册到注册中心
+    preferIpAddress: ${EUREKA_INSTANCE_PREFER_IP_ADDRESS:true}
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 10
+    # 服务的一些元数据信息
+    metadata-map:
+      VERSION: 0.11.0
+  client:
+    serviceUrl:
+      # 注册中心地址，多个用逗号隔开
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://172.16.211.160:10100/eureka}
+    registryFetchIntervalSeconds: 10
+    disable-delta: true
